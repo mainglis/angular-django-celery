@@ -5,7 +5,7 @@ from __future__ import absolute_import
 # for relative imports by default.
 
 # Celery settings
-
+import os
 BROKER_URL = 'amqp://guest:guest@localhost//'
 
 #: Only add pickle to this list if your broker is secured
@@ -17,6 +17,12 @@ CELERY_RESULT_SERIALIZER = 'json'
 # Django settings for proj project.
 
 DEBUG = True
+PROJECT_DIR = os.path.dirname(__file__)
+# BASE_DIR = os.path.abspath(os.path.join(PROJECT_DIR, os.pardir, os.pardir))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+print BASE_DIR
+
+DJANGO_STATIC_ROOT = BASE_DIR + PROJECT_DIR
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -42,7 +48,7 @@ DATABASES = {
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
+# In a Windows environment this must be set to your system time zone.d
 TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
@@ -75,7 +81,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = 'staticfiles'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -86,6 +92,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'client', 'src'),
 )
 
 # List of finder classes that know how to find static files in
@@ -137,6 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'kombu.transport.django.KombuAppConfig',
     'polls',
+    'djangular',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
