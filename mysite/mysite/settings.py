@@ -4,6 +4,12 @@ from __future__ import absolute_import
 # becomes `proj.celery.schedules` in Python 2.x since it allows
 # for relative imports by default.
 
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
+print BASE_DIR
+print PROJECT_PATH
+
 # Celery settings
 
 BROKER_URL = 'amqp://guest:guest@localhost//'
@@ -75,7 +81,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = 'static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -93,6 +99,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangular.finders.NamespacedAngularAppDirectoriesFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -124,6 +131,9 @@ TEMPLATE_DIRS = (
     # or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    # os.path.join(PROJECT_PATH, 'polls', 'templates'),
+    # os.path.join(PROJECT_PATH, 'blog', 'app'),
+    # os.path.join(PROJECT_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -136,7 +146,10 @@ INSTALLED_APPS = (
     'django_admin_bootstrapped',
     'django.contrib.admin',
     'kombu.transport.django.KombuAppConfig',
+    'djangular',
     'polls',
+    'blog',
+    'report',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
