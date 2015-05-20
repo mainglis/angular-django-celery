@@ -7,8 +7,6 @@ from __future__ import absolute_import
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
-print BASE_DIR
-print PROJECT_PATH
 
 # Celery settings
 
@@ -132,7 +130,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     # os.path.join(PROJECT_PATH, 'polls', 'templates'),
-    os.path.join(PROJECT_PATH, 'blog', 'app/'),
+    os.path.join(PROJECT_PATH, 'blog', 'app'),
     # os.path.join(PROJECT_PATH, 'templates'),
 )
 print TEMPLATE_DIRS
