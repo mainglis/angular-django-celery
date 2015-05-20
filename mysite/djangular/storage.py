@@ -1,9 +1,10 @@
 import os
 from re import sub
-from django.contrib.staticfiles.storage import AppStaticStorage
+# commenting out line below becuase of this https://github.com/appliedsec/djangular/issues/24
+# from django.contrib.staticfiles.storage import AppStaticStorage
+from django.contrib.staticfiles.storage import StaticFilesStorage
 
-
-class NamespacedAngularAppStorage(AppStaticStorage):
+class NamespacedAngularAppStorage(StaticFilesStorage):
     """
     A file system storage backend that takes an app module and works
     for the ``app`` directory of it.  The app module will be included
@@ -24,7 +25,7 @@ class NamespacedAngularAppStorage(AppStaticStorage):
         return super(NamespacedAngularAppStorage, self).path(name)
 
 
-class NamespacedE2ETestAppStorage(AppStaticStorage):
+class NamespacedE2ETestAppStorage(StaticFilesStorage):
     """
     A file system storage backend that takes an app module and works
     for the ``tests/e2e`` directory of it.  The app module will be included
@@ -43,7 +44,7 @@ class NamespacedE2ETestAppStorage(AppStaticStorage):
         super(NamespacedE2ETestAppStorage, self).__init__(app, *args, **kwargs)
 
 
-class NamespacedLibTestAppStorage(AppStaticStorage):
+class NamespacedLibTestAppStorage(StaticFilesStorage):
     """
     A file system storage backend that takes an app module and works
     for the ``tests/lib`` directory of it.  The app module will be included

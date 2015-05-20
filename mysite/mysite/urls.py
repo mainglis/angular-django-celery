@@ -26,3 +26,5 @@ urlpatterns = patterns('',
     url(r'^djangular/', include('djangular.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
+
+# urlpatterns += staticfiles_urlpatterns()

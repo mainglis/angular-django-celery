@@ -7,6 +7,7 @@ from __future__ import absolute_import
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
+print PROJECT_PATH
 
 # Celery settings
 
@@ -90,6 +91,12 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+
+    # could add this
+    # os.path.join(
+    #     os.path.dirname(__file__),
+    #     'static',
+    # ),
 )
 
 # List of finder classes that know how to find static files in
@@ -130,7 +137,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     # os.path.join(PROJECT_PATH, 'polls', 'templates'),
-    os.path.join(PROJECT_PATH, 'blog', 'app'),
+    os.path.join(BASE_DIR, 'blog', 'app', 'static', 'js'),
     # os.path.join(PROJECT_PATH, 'templates'),
 )
 print TEMPLATE_DIRS
