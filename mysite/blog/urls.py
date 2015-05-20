@@ -11,11 +11,13 @@ urlpatterns = [
     url(r'^$', AboutView.as_view()),
     # OOOOR you can do this
     # url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^partials/', TemplateView.as_view(template_name="partial1.html")),
     # url(r'^djangular/', include('djangular.urls')),
     url(r'^$', TemplateView.as_view(template_name="app.js"))
     # url(r'^app.js$', DjangularModuleTemplateView.as_view(), name='app.js')
 ]
 
+urlpatterns += staticfiles_urlpatterns()
 
 # urlpatterns = [
     # url(r'^djangular/', include('djangular.urls')),
