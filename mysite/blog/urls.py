@@ -19,6 +19,11 @@ urlpatterns = [
 
 urlpatterns += staticfiles_urlpatterns()
 
+
+# for partials, from https://speakerdeck.com/pycon2014/straightening-out-angularjs-with-python-by-jeff-schenck
+url(r'^rendered-partials/(?P<template_name>.*)$', 'render_partial'),
+
+
 # urlpatterns = [
     # url(r'^djangular/', include('djangular.urls')),
     # url(r'^$', views.OnePageAppView.as_view(), name='home')

@@ -7,7 +7,7 @@ from __future__ import absolute_import
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
-print PROJECT_PATH
+# print PROJECT_PATH
 
 # Celery settings
 
@@ -93,11 +93,10 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 
     # could add this
-    # os.path.join(
-    #     os.path.dirname(__file__),
-    #     'static',
-    # ),
+    os.path.join(BASE_DIR, 'report', 'static'),
+    os.path.join(BASE_DIR, 'blog', 'static')
 )
+print STATICFILES_DIRS
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -138,9 +137,9 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     # os.path.join(PROJECT_PATH, 'polls', 'templates'),
     os.path.join(BASE_DIR, 'blog', 'app', 'static', 'js'),
+    os.path.join(BASE_DIR, 'report', 'app', 'static', 'js'),
     # os.path.join(PROJECT_PATH, 'templates'),
 )
-print TEMPLATE_DIRS
 
 INSTALLED_APPS = (
     'django.contrib.auth',

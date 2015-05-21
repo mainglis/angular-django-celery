@@ -21,8 +21,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^blog/', include('blog.urls')),
+    url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^report/', include('report.urls', namespace='report', app_name='report')),
     url(r'^djangular/', include('djangular.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )

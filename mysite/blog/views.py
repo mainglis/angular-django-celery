@@ -24,3 +24,11 @@ class DjangularModuleTemplateView(TemplateView):
         context['disable_csrf_headers'] = self.disable_csrf_headers
         return context
 
+# then in the views, from https://speakerdeck.com/pycon2014/straightening-out-angularjs-with-python-by-jeff-schenck
+# from django.shortcuts import render
+# def render_partial(request, template_name=None):
+#     template_name = 'partials/{}'.format(template_name)
+#     context = {
+#         'you-are-a-unique-snowflake': True,
+#     }
+#     return render(request, template_name, context)
