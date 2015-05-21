@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en" ng-app="report">
 <head>
@@ -7,14 +8,13 @@
 </head>
 <body>
   <ul class="menu">
-    <li><a href="1">newview1</a></li>
-      <li><a href="#/view3">view3</a></li>
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
     <li>{{ new_choice }}</li>
   </ul>
 
-  <div ng-view></div>
+  <div ng-view>
+  </div>
 
   <div>Angular seed app inside reports: v<span app-version></span></div>
 

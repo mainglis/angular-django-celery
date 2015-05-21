@@ -8,4 +8,7 @@ angular.module('report.controllers', []).
     }])
     .controller('MyCtrl2', [function() {
 
+    }])
+    .controller('SampleController', [function() {
+        console.log('i get to the sample controller');
     }]);

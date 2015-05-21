@@ -7,7 +7,6 @@ from __future__ import absolute_import
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
-# print PROJECT_PATH
 
 # Celery settings
 
@@ -94,7 +93,7 @@ STATICFILES_DIRS = (
 
     # could add this
     os.path.join(BASE_DIR, 'report', 'static'),
-    os.path.join(BASE_DIR, 'blog', 'static')
+    os.path.join(BASE_DIR, 'blog', 'static'),
 )
 print STATICFILES_DIRS
 

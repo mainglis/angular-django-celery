@@ -4,6 +4,7 @@ var djangular = angular.module('djangular', []).
     constant('DjangoProperties', {
         'STATIC_URL': '{% get_static_prefix %}',
         'MEDIA_URL': '{% get_media_prefix %}',
+        'TEMPLATE_DIRS': "os.path.join(BASE_DIR, 'blog', 'app', 'static', 'js'), os.path.join(BASE_DIR, 'report', 'app', 'static', 'js')",
         'USER_NAME': '{{ user.username|escapejs }}',
         'GROUP_NAMES': [ // {% for group in user.groups.all %}
             '{{ group.name|escapejs }}', // {% endfor %}
@@ -56,9 +57,10 @@ var djangular = angular.module('djangular', []).
 // {% if not disable_csrf_headers %}
 // Assign the CSRF Token as needed, until Angular provides a way to do this properly (https://github.com/angular/angular.js/issues/735)
 var djangularCsrf = angular.module('djangular.csrf', ['ngCookies']).
-    config(['$httpProvider', function($httpProvider) {
+    config(['$httpProvider', '$interpolateProvider', function($httpProvider, $interpolateProvider) {
         // cache $httpProvider, as it's only available during config...
         djangularCsrf.$httpProvider = $httpProvider;
+        // $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
     }]).
     factory('UpdateCsrfToken', function() {
         return function(csrfToken) {
